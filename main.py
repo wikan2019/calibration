@@ -12,8 +12,14 @@ if __name__ == '__main__':
     path_manager = PathManager().set_path_manager_options(
         ArgumentParser.get_path_manager_options())
 
+    intrinsics_calibrator.remove_non_chess_images(
+        path_manager.intrinsic_image_dir(),
+        path_manager.remove_non_chess_image_pro_dir())
+    
     intrinsics_calibrator.calibrate_intrinsics(
-       path_manager.intrinsic_image_dir())
+        path_manager.intrinsic_image_dir())
+
+    intrinsics_calibrator.sort_out_result(path_manager.intrinsic_image_dir())
 
     ConfigsWriter.write_total_configs(path_manager.extrinsics_image_dir())
     ConfigsWriter.write_front_configs(path_manager.intrinsic_image_dir(),

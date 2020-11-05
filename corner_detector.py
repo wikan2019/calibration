@@ -17,7 +17,7 @@ class CornerDetector(object):
 
     @classmethod
     def corner_detect(cls, image_path: str):
-        exe_path = "/home/huikang/saic_calibration/CORNER_DETECT/build "
+        exe_path = "~/Projects/CORNER_DETECT/build "
         cmd = "cd " + exe_path
         cmd += "&& ./corner_detect "
         cmd += image_path
@@ -46,8 +46,8 @@ class CornerDetector(object):
 
     @classmethod
     def front_2d_3d_merge(cls, extrinsics_image_dir: str):
-        exe_path = "/home/huikang/saic_calibration/CORNER_DETECT/build"
-        two_d_path = os.path.join(exe_path, "deug.txt")
+        exe_path = "Projects/CORNER_DETECT/build"
+        two_d_path = os.path.join(PathOperator.home_dir(),exe_path, "deug.txt")
         two_d_pixel = JsonInterf.read(two_d_path)
 
         three_d_coords = np.loadtxt(
@@ -63,8 +63,8 @@ class CornerDetector(object):
 
     @classmethod
     def rear_2d_3d_merge(cls, extrinsics_image_dir: str):
-        exe_path = "/home/huikang/saic_calibration/CORNER_DETECT/build"
-        two_d_path = os.path.join(exe_path, "deug.txt")
+        exe_path = "Projects/CORNER_DETECT/build"
+        two_d_path = os.path.join(PathOperator.home_dir(),exe_path, "deug.txt")
         two_d_pixel = JsonInterf.read(two_d_path)
         three_d_coords = np.loadtxt(
             os.path.join(extrinsics_image_dir, "2d-3d", "rear_3d.txt"))

@@ -44,3 +44,6 @@ class PathManager(PathOperator):
 
     def extrinsics_configs_path(self) -> str:
         return os.path.join(self.extrinsics_image_dir(), "configs.json")
+
+    def remove_non_chess_image_pro_dir(self)->str:
+        return os.path.join(self.home_dir(),"Projects/Intrinsics_calibration/opencv_method")

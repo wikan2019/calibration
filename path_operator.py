@@ -1,4 +1,5 @@
 import os
+from typing import List
 
 
 class PathOperator(object):
@@ -24,6 +25,19 @@ class PathOperator(object):
     @classmethod
     def home_dir(cls)->str:
         return os.path.expanduser("~")
+    
+    @classmethod
+    def file_abs_path_in(cls,dir:str)->List[str]:
+        paths=[]
+        for filename in os.listdir(dir):
+            paths.append(os.path.join(dir,filename))
+        return paths
+
+    @classmethod
+    def remove_file(cls,file_path):
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+
 
 
 
